@@ -1,7 +1,11 @@
 package config
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestReadConfig(t *testing.T) {
-	ReadConfig()
+	res := ReadConfig("../../conf.yaml")
+	fmt.Printf("%+v", res)
 }

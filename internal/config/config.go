@@ -23,10 +23,8 @@ type Script struct {
 	Data string
 }
 
-func ReadConfig() *Config {
-	viper.SetConfigName("conf")
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
+func ReadConfig(file string) *Config {
+	viper.SetConfigFile(file)
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %w", err))
@@ -40,7 +38,7 @@ func ReadConfig() *Config {
 		for _, scriptName := range host.ScriptNames {
 			viper.SetConfigName(scriptName)
 			viper.SetConfigType("yaml")
-			viper.AddConfigPath("conf")
+			viper.AddConfigPath("script")
 			err = viper.ReadInConfig()
 
 			script := &Script{}
