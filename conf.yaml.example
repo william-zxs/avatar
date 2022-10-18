@@ -1,6 +1,0 @@
-hosts:
-  - addr: 127.0.0.1:22 # ip地址
-    username: root # 用户名 建议root
-    password: abc123  # 用户密码
-    scriptNames: # 检查指标 名字为 conf目录下文件名称（不包含扩展名）
-      - ping

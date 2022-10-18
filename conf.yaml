@@ -5,9 +5,9 @@ hosts:
     password: abc123  # 用户密码
     scripts: # 检查指标 名字为 scripts目录下文件名称（不包含扩展名）
       - ping
-#  - name: server2
-#    addr: 10.211.55.36:22
-#    username: root
-#    password: abc123
-#    scripts:
-#      - memory
+  - name: server2
+    addr: 10.211.55.36:22
+    username: root
+    password: abc123
+    scripts:
+      - ping
