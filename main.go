@@ -14,7 +14,7 @@ func checkErr(err error) {
 }
 
 func main() {
-	confFile := flag.String("conf", "conf.yaml", "请指定配置文件")
+	confFile := flag.String("f", "conf.yaml", "请指定配置文件")
 	flag.Parse()
 	//加载配置、脚本
 	conf := config.ReadConfig(*confFile)
