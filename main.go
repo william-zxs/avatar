@@ -7,23 +7,30 @@ import (
 	"github.com/William-ZXS/avatar/internal/ssh"
 )
 
-// 调用测试
+func checkErr(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
-	confFile := flag.String("conf", "config.yaml", "请指定配置文件")
+	confFile := flag.String("conf", "conf.yaml", "请指定配置文件")
 	flag.Parse()
-	fmt.Println("==flag=confFile=", *confFile)
+	//加载配置、脚本
 	conf := config.ReadConfig(*confFile)
+
+	//执行脚本
 	for i := 0; i < len(conf.Hosts); i++ {
 		host := conf.Hosts[i]
 		cli := ssh.NewCli(host.Username, host.Password, host.Addr)
-		for _, script := range host.Scripts {
-			msg, err := cli.Run(script.Data)
+		for _, scriptData := range host.ScriptDatas {
+			msg, err := cli.Run(scriptData.Data)
 			if err != nil {
 				fmt.Println("err:", err)
 			} else {
 				fmt.Println("msg:", msg)
 			}
-
 		}
 	}
+
 }
